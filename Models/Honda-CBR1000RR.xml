@@ -128,9 +128,9 @@
 	<name>COMBI</name>
     <path>Aircraft/Honda-CBR/Models/Instruments/combi/combi.xml</path>
     <offsets>
-       <x-m> -0.714 </x-m>
-       <y-m>-0.02 </y-m>
-       <z-m> 0.95 </z-m>
+       <x-m> -0.70 </x-m>
+       <y-m>-0.01 </y-m>
+       <z-m> 0.91 </z-m>
       <pitch-deg> -50 </pitch-deg>
     </offsets>
   </model>
@@ -139,10 +139,11 @@
 	<name>SL</name>
     <path>Aircraft/Honda-CBR/Models/Instruments/sl/speedlimiter.xml</path>
     <offsets>
-        <x-m> -0.71 </x-m>
-        <y-m>-0.138 </y-m>
-        <z-m> 0.945 </z-m>
-      <pitch-deg> 45 </pitch-deg>
+        <x-m> -0.58 </x-m>
+        <y-m>-0.17 </y-m>
+        <z-m> 0.9 </z-m>
+      <heading-deg>22 </heading-deg>
+      <roll-deg> 10 </roll-deg>
     </offsets>
   </model>
  
@@ -150,9 +151,9 @@
 	<name>TRANSPONDER</name>
     <path>Aircraft/Honda-CBR/Models/Instruments/transponder/transponder.xml</path>
     <offsets>
-        <x-m> -0.72 </x-m>
-        <y-m> -0.138</y-m>
-        <z-m> 0.85 </z-m>
+        <x-m> -0.67 </x-m>
+        <y-m> 0.02</y-m>
+        <z-m> 0.815 </z-m>
       <roll-deg> 45 </roll-deg>
       <heading-deg> 90 </heading-deg>
     </offsets>
@@ -420,6 +421,7 @@
     <!-- front fork -->
     <animation>
   	  <type>rotate</type>
+        <object-name>SL</object-name>
         <object-name>carrd05</object-name>
         <object-name>carrd06</object-name>
         <object-name>carrd07</object-name>
