@@ -362,7 +362,7 @@ setlistener("sim/model/start-idling", func()
 			help_win_red.write("Is everything ok with you?");
 		}else{
 			help_win_red.write("5 SECONDS WAITING FOR REPLACEMENT!");
-			settimer(func{setprop("/controls/waiting", 0)}, 3);
+			settimer(func{setprop("/controls/waiting", 0)}, 5);
 		}
    }
   }, 1, 1);
