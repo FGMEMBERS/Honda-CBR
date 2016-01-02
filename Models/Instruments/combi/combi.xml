@@ -1528,11 +1528,11 @@
 		<entry><ind> 8900</ind><dep> 6</dep></entry>
 		<entry><ind> 9000</ind><dep> 4.2</dep></entry>
 		<entry><ind> 10000</ind><dep>1.38</dep></entry>
-		<entry><ind> 11000</ind><dep>0.83</dep></entry>
-		<entry><ind> 12000</ind><dep>0.58</dep></entry>
-		<entry><ind> 13000</ind><dep>0.41</dep></entry>
-		<entry><ind> 14000</ind><dep>0.35</dep></entry>
-		<entry><ind>15000</ind><dep> 0</dep></entry>
+		<entry><ind> 12000</ind><dep>0.83</dep></entry>
+		<entry><ind> 13000</ind><dep>0.58</dep></entry>
+		<entry><ind> 15000</ind><dep>0.41</dep></entry>
+		<entry><ind> 17000</ind><dep>0.35</dep></entry>
+		<entry><ind>19000</ind><dep> 0</dep></entry>
 	  </interpolation>
       <center>
        <x-m>-0.0073</x-m>

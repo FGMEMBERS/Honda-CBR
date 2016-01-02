@@ -30,7 +30,7 @@ var looptime = 0.1;
 var lastrpm = 0;
 var transmissionpower = 0;
 var minrpm = 2100;
-var maxrpm = 15000;
+var maxrpm = 19500;
 var newrpm = 0;
 var clutchrpm = 0;
 var maxhealth = 40; # for the engine killing, higher is longer live while overspeed rpm
@@ -152,7 +152,7 @@ var loop = func {
 			vmax = 170;
 			fastcircuit.setValue(0.5);
 		} else if (gear.getValue() == 6) {
-			vmax = 210;
+			vmax = 205;
 			fastcircuit.setValue(0.6);
 		}
 
