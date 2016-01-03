@@ -10,7 +10,7 @@
 <sim>
     <model>
         <livery>
-            <name type="string">No.10 Conner Cummins</name>
+            <name type="string">No.10 Conor Cummins</name>
             <texture>Liveries/Honda-CBR1000RR-CCummins.png</texture>
         </livery>
     </model>
