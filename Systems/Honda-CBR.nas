@@ -228,6 +228,8 @@ setlistener("/controls/engines/engine[0]/throttle", func (position){
 
 setlistener("/gear/gear/rollspeed-ms", func (speed){
     var speed = speed.getValue();
+    # only for manipulate the reset m function 
+	if (speed > 10) setprop("/controls/waiting", 1);
 	if(getprop("/instrumentation/Honda-CBR/speed-indicator/selection")){
 		if(speed > 0.1){
 			setprop("/instrumentation/Honda-CBR/speed-indicator/speed-meter", speed*3600/1000*0.621371); # mph
