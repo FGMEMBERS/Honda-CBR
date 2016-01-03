@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
-
+<!--###################################################################################
+		Lake of Constance Hangar :: L.Negrassus 
+		Honda-CBR1000RR for Flightgear Januar 2016
+		This file is licenced under the terms of the GNU General Public Licence V2 or later
+		###################################################################################
+-->
 <PropertyList>
 
 	<path>shadow.ac</path>

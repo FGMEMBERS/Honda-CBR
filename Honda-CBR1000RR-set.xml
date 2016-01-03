@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--###################################################################################
-		Lake of Constance Hangar :: N.Negrassuss
+		Lake of Constance Hangar :: L.Negrassus 
 		Honda-CBR1000RR for Flightgear Januar 2016
 		This file is licenced under the terms of the GNU General Public Licence V2 or later
 		###################################################################################
@@ -8,7 +8,7 @@
 <PropertyList>
  <sim>
 		<description>Honda-CBR1000RR</description>
-		<author>LAKE OF CONSTANCE HANGAR :: N.Negrassuss</author>
+		<author>LAKE OF CONSTANCE HANGAR :: L.Negrassus</author>
 		<aircraft-version>0.0.1</aircraft-version>
 		<status>alpha</status>
 		<flight-model>yasim</flight-model>

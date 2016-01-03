@@ -1,8 +1,9 @@
 ###############################################################################################
 #		Lake of Constance Hangar :: M.Kraus
-#		BMW S 1000 RR for Flightgear August 2014
+#		Honda-CBR1000RR for Flightgear September 2014
 #		This file is licenced under the terms of the GNU General Public Licence V2 or later
 ############################################################################################### 
+
 var flaginfo = props.globals.initNode("/controls/flag-info",0,"INT");
 var racelap = props.globals.getNode("/Honda-CBR/race-lap");
 var thissector = props.globals.getNode("/Honda-CBR/this-sector");

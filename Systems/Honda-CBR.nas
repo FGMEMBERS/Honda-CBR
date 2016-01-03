@@ -1,8 +1,9 @@
 ###############################################################################################
 #		Lake of Constance Hangar :: M.Kraus
-#		Honda-CBR for Flightgear September 2014
+#		Honda-CBR1000RR for Flightgear September 2014
 #		This file is licenced under the terms of the GNU General Public Licence V2 or later
-###############################################################################################
+############################################################################################### 
+
 var config_dlg = gui.Dialog.new("/sim/gui/dialogs/config/dialog", getprop("/sim/aircraft-dir")~"/Systems/config.xml");
 var hangoffspeed = props.globals.initNode("/controls/hang-off-speed",80,"DOUBLE");
 var hangoffhdg = props.globals.initNode("/controls/hang-off-hdg",0,"DOUBLE");
