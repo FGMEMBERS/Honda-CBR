@@ -63,7 +63,8 @@
     <object-name>ducw</object-name>
     <object-name>ducw01</object-name>
     <object-name>starter</object-name>
-    <object-name>oil-control</object-name> 
+    <object-name>tube2</object-name>
+    <object-name>tube3</object-name>
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
     <texture>Honda-CBR1000RR.png</texture>
@@ -355,7 +356,8 @@
       <object-name>ducw</object-name>
       <object-name>ducw01</object-name>
       <object-name>starter</object-name> 
-      <object-name>oil-control</object-name>
+      <object-name>tube2</object-name>
+      <object-name>tube3</object-name>
     <condition>
       <not>
         <equals>
@@ -429,7 +431,8 @@
       <object-name>ducw</object-name>
       <object-name>ducw01</object-name>
       <object-name>starter</object-name> 
-      <object-name>oil-control</object-name>
+      <object-name>tube2</object-name>
+      <object-name>tube3</object-name>
       <condition>
         <equals>
           <property>sim/current-view/name</property>
@@ -475,6 +478,7 @@
         <object-name>ducp2</object-name>
         <object-name>ducw</object-name>
 	    <object-name>starter</object-name>
+        <object-name>tube2</object-name>
         <property>surface-positions/rudder-pos-norm</property>
         <interpolation>
           <entry><ind> -1 </ind><dep> -20 </dep></entry>
