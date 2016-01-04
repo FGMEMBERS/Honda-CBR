@@ -95,6 +95,30 @@ var forkcontrol = func{
 
 forkcontrol();
 
+var temp_fake_calc = func{
+
+	var et = getprop("/engines/engine[0]/engine-temperatur") or 0;
+    var ek = getprop("/engines/engine/killed") or 0;
+	var eat = getprop("/environment/temperature-degc") or 0;
+	var eru = getprop("engines/engine/running") or 0;
+	var erp = getprop("engines/engine/rpm") or 0;
+	var net = 0;
+	if(eru){
+		if (ek > 0) {
+			net = et * ek + et;
+		}else{
+			net = eat + 64 + erp/990;
+		}
+	}else{
+		net = eat;
+	}
+
+	interpolate("/engines/engine[0]/engine-temperatur", net, 20);
+	settimer(temp_fake_calc, 20);
+};
+
+temp_fake_calc();
+
 setlistener("/devices/status/mice/mouse/button", func (state){
     var state = state.getBoolValue();
 	# helper for the steering
