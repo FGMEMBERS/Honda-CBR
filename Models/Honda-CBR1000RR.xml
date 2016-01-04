@@ -31,7 +31,7 @@
     <object-name>carrd</object-name>
     <object-name>carrd01</object-name>
     <object-name>carrd03</object-name>
-    <object-name>screws</object-name>
+    <object-name>carrd03.inner</object-name>
     <object-name>carrd04</object-name>
     <object-name>carrd05</object-name>
     <object-name>carrd06</object-name>
@@ -323,7 +323,7 @@
       <object-name>carrd</object-name>
       <object-name>carrd01</object-name>
       <object-name>carrd03</object-name>
-      <object-name>screws</object-name>
+      <object-name>carrd03.inner</object-name>
       <object-name>carrd04</object-name>
       <object-name>carrd05</object-name>
       <object-name>carrd06</object-name>
@@ -398,7 +398,7 @@
       <object-name>carrd</object-name>
       <object-name>carrd01</object-name>
       <object-name>carrd03</object-name>
-      <object-name>screws</object-name>
+      <object-name>carrd03.inner</object-name>
       <object-name>carrd04</object-name>
       <object-name>carrd05</object-name>
       <object-name>carrd06</object-name>
