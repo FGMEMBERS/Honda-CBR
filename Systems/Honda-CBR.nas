@@ -5,7 +5,7 @@
 ############################################################################################### 
 
 var config_dlg = gui.Dialog.new("/sim/gui/dialogs/config/dialog", getprop("/sim/aircraft-dir")~"/Systems/config.xml");
-var hangoffspeed = props.globals.initNode("/controls/hang-off-speed",80,"DOUBLE");
+var hangoffspeed = props.globals.initNode("/controls/hang-off-speed",0,"DOUBLE");
 var hangoffhdg = props.globals.initNode("/controls/hang-off-hdg",0,"DOUBLE");
 var waiting = props.globals.initNode("/controls/waiting",0,"DOUBLE");
 
@@ -102,12 +102,13 @@ var temp_fake_calc = func{
 	var eat = getprop("/environment/temperature-degc") or 0;
 	var eru = getprop("engines/engine/running") or 0;
 	var erp = getprop("engines/engine/rpm") or 0;
+	var coolwind = getprop("/gear/gear/rollspeed-ms") or 1;
 	var net = 0;
 	if(eru){
 		if (ek > 0) {
 			net = et * ek + et;
 		}else{
-			net = eat + 64 + erp/990;
+			net = eat + 64 + erp/990 - abs(coolwind/2);
 		}
 	}else{
 		net = eat;
@@ -151,9 +152,16 @@ setlistener("/controls/flight/aileron", func (position){
 		}
 		
 	}else{
-		var np = math.round(position*position*position*100);
-		np = np/100;
-		interpolate("/controls/flight/aileron-manual", np,0.1);
+		var joyst = getprop("/input/joysticks/js/id") or '';
+		if(joyst == 'Arduino Leonardo'){
+			var np = math.round(position*100);
+			np = np/100;
+			interpolate("/controls/flight/aileron-manual", np,0.1);
+		}else{
+			var np = math.round(position*position*position*100);
+			np = np/100;
+			interpolate("/controls/flight/aileron-manual", np,0.1);
+		}
 	}
 });
 
@@ -189,10 +197,10 @@ setlistener("/surface-positions/left-aileron-pos-norm", func{
 				if(onwork == 0){
 					settimer(func{setprop("/controls/hangoff",1)},0.1);
 					interpolate("/sim/current-view/x-offset-m", math.sin(factor*1.8)*(1.34+driverpos/5),0.1);
-					interpolate("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.36 - godown/1300 + lookup/12 + driverpos/4),0.1);
+					interpolate("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.36 - godown/1300 + lookup/14 + driverpos/4),0.1);
 				}else{
 					setprop("/sim/current-view/x-offset-m", math.sin(factor*1.8)*(1.34+driverpos/5));
-					setprop("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.36 - godown/1300 + lookup/12 + driverpos/4));
+					setprop("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.36 - godown/1300 + lookup/14 + driverpos/4));
 				}
 			}else{
 				if(onwork == 1){
