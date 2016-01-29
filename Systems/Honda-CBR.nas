@@ -8,6 +8,7 @@ var config_dlg = gui.Dialog.new("/sim/gui/dialogs/config/dialog", getprop("/sim/
 var hangoffspeed = props.globals.initNode("/controls/hang-off-speed",0,"DOUBLE");
 var hangoffhdg = props.globals.initNode("/controls/hang-off-hdg",0,"DOUBLE");
 var waiting = props.globals.initNode("/controls/waiting",0,"DOUBLE");
+var nosedown = props.globals.initNode("/controls/nose-down",0,"DOUBLE");
 
 ################## Little Help Window on bottom of screen #################
 var help_win = screen.window.new( 0, 0, 1, 5 );
@@ -120,6 +121,12 @@ var temp_fake_calc = func{
 
 temp_fake_calc();
 
+setlistener("/controls/gear/brake-left", func (state){
+    var state = state.getBoolValue();
+	# helper for nose down effect
+	interpolate("/controls/nose-down", state,0.4);
+},0,1);
+
 setlistener("/devices/status/mice/mouse/button", func (state){
     var state = state.getBoolValue();
 	# helper for the steering
@@ -189,7 +196,6 @@ setlistener("/surface-positions/left-aileron-pos-norm", func{
 	}else{
 		if(cvnr == 0){
 			var godown = getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") or 0;
-			var lookup = getprop("/controls/gear/brake-right") or 0;
 			var onwork = getprop("/controls/hangoff") or 0;
 			if(godown < hangoffspeed.getValue()){
 				var factor = (position <= 0)? -0.6 : 0.6;
@@ -197,19 +203,19 @@ setlistener("/surface-positions/left-aileron-pos-norm", func{
 				if(onwork == 0){
 					settimer(func{setprop("/controls/hangoff",1)},0.1);
 					interpolate("/sim/current-view/x-offset-m", math.sin(factor*1.8)*(1.34+driverpos/5),0.1);
-					interpolate("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.36 - godown/1300 + lookup*lookup*lookup/30 + driverpos/4),0.1);
+					interpolate("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.36 - godown/1300 + nosedown.getValue()/12 + driverpos/4),0.1);
 				}else{
 					setprop("/sim/current-view/x-offset-m", math.sin(factor*1.8)*(1.34+driverpos/5));
-					setprop("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.36 - godown/1300 + lookup*lookup*lookup/30 + driverpos/4));
+					setprop("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.36 - godown/1300 + nosedown.getValue()/12 + driverpos/4));
 				}
 			}else{
 				if(onwork == 1){
 					interpolate("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.3+driverpos/5),0.1);
-					interpolate("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.36 - godown/1500 + lookup*lookup*lookup/30 + driverpos/4),0.1);
+					interpolate("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.36 - godown/1500 + nosedown.getValue()/12 + driverpos/4),0.1);
 					settimer(func{setprop("/controls/hangoff",0)},0.1);
 				}else{
 					setprop("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.3+driverpos/5));
-					setprop("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.36 - godown/1500 + lookup*lookup*lookup/30 + driverpos/4));
+					setprop("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.36 - godown/1500 + nosedown.getValue()/12 + driverpos/4));
 				}
 			}
 			setprop("/sim/current-view/z-offset-m",driverview);	
