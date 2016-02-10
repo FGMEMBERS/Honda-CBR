@@ -9,7 +9,18 @@
 <PropertyList>
 
   <path>driver_special_r.ac</path>	
-  
+  <animation>
+    <type>noshadow</type>
+    <object-name>helm.001</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>helm.001</object-name>
+  </animation>
+   
   <nopreview/>
 
   <animation>
@@ -18,6 +29,7 @@
     <object-name>corps</object-name>
     <object-name>corpsMichael</object-name>
     <object-name>helm</object-name>
+    <object-name>helm.002</object-name>
   	<object-name>hair</object-name>
     <object-name>brasG</object-name>
     <object-name>brasD</object-name>
@@ -44,6 +56,7 @@
     <object-name>corps</object-name>
     <object-name>corpsMichael</object-name>
     <object-name>helm</object-name>
+    <object-name>helm.002</object-name>
   	<object-name>hair</object-name>
     <object-name>brasG</object-name>
     <object-name>brasD</object-name>
@@ -70,6 +83,7 @@
     <object-name>corps</object-name>
     <object-name>corpsMichael</object-name>
     <object-name>helm</object-name>
+    <object-name>helm.002</object-name>
   	<object-name>hair</object-name>
     <object-name>brasG</object-name>
     <object-name>brasD</object-name>
@@ -96,6 +110,7 @@
     <object-name>corps</object-name>
     <object-name>corpsMichael</object-name>
     <object-name>helm</object-name>
+    <object-name>helm.002</object-name>
   	<object-name>hair</object-name>
     <object-name>brasG</object-name>
     <object-name>brasD</object-name>
@@ -122,6 +137,7 @@
     <object-name>corps</object-name>
     <object-name>corpsMichael</object-name>
     <object-name>helm</object-name>
+    <object-name>helm.002</object-name>
   	<object-name>hair</object-name>
     <object-name>brasG</object-name>
     <object-name>brasD</object-name>
@@ -148,6 +164,7 @@
     <object-name>corps</object-name>
     <object-name>corpsMichael</object-name>
     <object-name>helm</object-name>
+    <object-name>helm.002</object-name>
   	<object-name>hair</object-name>
     <object-name>brasG</object-name>
     <object-name>brasD</object-name>
@@ -178,23 +195,13 @@
 	    </equals>
 	  </condition>
   </animation>
-  
-  <animation>
-  <type>select</type>
-  <object-name>hair</object-name>
-	  <condition>
-	    <equals>
-	      <property>sim/model/livery/file</property>
-	      <value>tinmouth</value>
-	    </equals>
-	  </condition>
-  </animation>
 
   <animation>
   <type>select</type>
   <object-name>tete</object-name>
   <object-name>helm</object-name>
   <object-name>helm.001</object-name>
+  <object-name>helm.002</object-name>
   <object-name>corps</object-name>
   <object-name>corpsMichael</object-name>
   <object-name>gilet</object-name>
@@ -372,6 +379,7 @@
     <object-name>tete</object-name>
     <object-name>helm</object-name>
     <object-name>helm.001</object-name>
+    <object-name>helm.002</object-name>
  	<object-name>hair</object-name>
     <condition>
       <greater-than>
