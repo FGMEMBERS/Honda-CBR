@@ -208,6 +208,12 @@
 		        <value>dunlop</value>
 	        </equals>
 	      </not>
+	      <not>
+	        <equals>
+		        <property>sim/model/livery/file</property>
+		        <value>mcguinness</value>
+	        </equals>
+	      </not>
     </condition>
   </animation>
   
@@ -215,10 +221,16 @@
   <type>select</type>
     <object-name>corpsMichael</object-name>
     <condition>
+		<or>
 	        <equals>
 		        <property>sim/model/livery/file</property>
 		        <value>dunlop</value>
 	        </equals>
+	        <equals>
+		        <property>sim/model/livery/file</property>
+		        <value>mcguinness</value>
+	        </equals>
+		</or>
     </condition>
   </animation>
     
@@ -234,6 +246,12 @@
 		        <value>dunlop</value>
 	        </equals>
 	      </not>
+	      <not>
+	        <equals>
+		        <property>sim/model/livery/file</property>
+		        <value>mcguinness</value>
+	        </equals>
+	      </not>
 	  </and>
     </condition>
   </animation>
@@ -242,13 +260,22 @@
   <type>select</type>
   <object-name>giletMichael</object-name>
     <condition>
+		<or>
 		<and>
       	  <property>sim/multiplay/generic/int[0]</property>
 	        <equals>
 		        <property>sim/model/livery/file</property>
 		        <value>dunlop</value>
 	        </equals>
-	  </and>
+	  	</and>
+		<and>
+      	  <property>sim/multiplay/generic/int[0]</property>
+	        <equals>
+		        <property>sim/model/livery/file</property>
+		        <value>mcguinness</value>
+	        </equals>
+	  	</and>
+		</or>
     </condition>
   </animation>
   
