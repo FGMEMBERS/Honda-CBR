@@ -195,6 +195,30 @@
 	    </equals>
 	  </condition>
   </animation>
+    
+  <animation>
+  <type>select</type>
+    <object-name>helm.001</object-name>
+    <condition>
+	      <not>
+	        <equals>
+		        <property>sim/model/livery/file</property>
+		        <value>johnston</value>
+	        </equals>
+	      </not>
+    </condition>
+  </animation>
+  
+  <animation>
+  <type>select</type>
+    <object-name>helm.002</object-name>
+    <condition>
+	        <equals>
+		        <property>sim/model/livery/file</property>
+		        <value>johnston</value>
+	        </equals>
+    </condition>
+  </animation>
 
   <animation>
   <type>select</type>
