@@ -158,6 +158,12 @@
 	        <value>martin</value>
 	      </equals>
       </not>
+      <not>
+	      <equals>
+	        <property>sim/model/livery/file</property>
+	        <value>mcguinness</value>
+	      </equals>
+      </not>
     </condition>
 </animation>
 
@@ -165,10 +171,16 @@
 	<type>select</type>
 	<object-name>TACHO</object-name>
     <condition>
+		<or>
       <equals>
         <property>sim/model/livery/file</property>
         <value>martin</value>
       </equals>
+      <equals>
+        <property>sim/model/livery/file</property>
+        <value>mcguinness</value>
+      </equals>
+  </or>
     </condition>
 </animation> 
 
