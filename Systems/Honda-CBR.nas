@@ -7,6 +7,7 @@
 var config_dlg = gui.Dialog.new("/sim/gui/dialogs/config/dialog", getprop("/sim/aircraft-dir")~"/Systems/config.xml");
 var hangoffspeed = props.globals.initNode("/controls/hang-off-speed",0,"DOUBLE");
 var hangoffhdg = props.globals.initNode("/controls/hang-off-hdg",0,"DOUBLE");
+var hangoffviewdeg = props.globals.initNode("/controls/hang-off-view-deg",0,"DOUBLE");
 var waiting = props.globals.initNode("/controls/waiting",0,"DOUBLE");
 var nosedown = props.globals.initNode("/controls/nose-down",0,"DOUBLE");
 
@@ -72,12 +73,12 @@ var forkcontrol = func{
 			}
 		  	if(posi > 0.0001 and getprop("/controls/hangoff") == 1){
 				hdgpos = 360 - 60*posi;
-				hdgpos = (hdgpos < 340) ? 340 : hdgpos;
+				hdgpos = (hdgpos < (360 - hangoffviewdeg.getValue())) ? 360 - hangoffviewdeg.getValue() : hdgpos;
 		  		setprop("/sim/current-view/goal-heading-offset-deg", hdgpos);
 				setprop("/sim/current-view/goal-roll-offset-deg", sceneryposi);
 		  	}else if (posi < -0.0001 and getprop("/controls/hangoff") == 1){
 				hdgpos = 60*abs(posi);
-				hdgpos = (hdgpos > 20) ? 20 : hdgpos;
+				hdgpos = (hdgpos > hangoffviewdeg.getValue()) ? hangoffviewdeg.getValue() : hdgpos;
 		  		setprop("/sim/current-view/goal-heading-offset-deg", hdgpos);
 				setprop("/sim/current-view/goal-roll-offset-deg", sceneryposi);
 			}else if (posi > 0 and posi < 0.0001 and getprop("/controls/hangoff") == 1){

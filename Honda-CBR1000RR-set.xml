@@ -319,6 +319,7 @@ and have fun!</text>
 		<path>/controls/flight/select-throttle-input</path>
 		<path>/controls/Honda-CBR/old-mens-mode</path>
 		<path>/controls/hang-off-speed</path>
+		<path>/controls/hang-off-view-deg</path>
 		<path>/instrumentation/Honda-CBR/distance-calculator/mzaehler</path>
 		<path>/controls/fuel/remember-level</path>
 	</aircraft-data> 
