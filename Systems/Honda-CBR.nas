@@ -8,6 +8,7 @@ var config_dlg = gui.Dialog.new("/sim/gui/dialogs/config/dialog", getprop("/sim/
 var hangoffspeed = props.globals.initNode("/controls/hang-off-speed",0,"DOUBLE");
 var hangoffhdg = props.globals.initNode("/controls/hang-off-hdg",0,"DOUBLE");
 var hangoffviewdeg = props.globals.initNode("/controls/hang-off-view-deg",0,"DOUBLE");
+var steeringdamper = props.globals.initNode("/controls/steering-damper",1,"DOUBLE");
 var waiting = props.globals.initNode("/controls/waiting",0,"DOUBLE");
 var nosedown = props.globals.initNode("/controls/nose-down",0,"DOUBLE");
 
@@ -41,7 +42,8 @@ var forkcontrol = func{
 			f.setValue(r);
 		}
 	}else{
-		f.setValue(r);
+		var sensibility_fork = steeringdamper.getValue()*0.03;
+		interpolate("/controls/flight/fork", r, sensibility_fork);
 	}
 	if(bs > 38){
 		setprop("/controls/gear/brake-front", bl);
@@ -106,6 +108,11 @@ var forkcontrol = func{
 };
 
 forkcontrol();
+
+# --- Help window for steering damper setting ---
+setlistener("/controls/steering-damper", func (sd){
+	help_win.write(sprintf("Steering damper setting: %.0f clicks", sd.getValue()));
+},1,0);
 
 var temp_fake_calc = func{
 
@@ -178,7 +185,10 @@ setlistener("/controls/flight/aileron", func (position){
 		}else{
 			var np = math.round(position*position*position*100);
 			np = np/100;
-			interpolate("/controls/flight/aileron-manual", np,0.1);
+			#print("NP: ", np);
+			# the *0.0625 is the calculation number for the 16clicks Oehlins steering damper
+			var sensibility = (np == 0 or abs(np) < steeringdamper.getValue()*0.0625) ? steeringdamper.getValue()*0.0625 : abs(np);
+			interpolate("/controls/flight/aileron-manual", np, sensibility);
 		}
 	}
 });
@@ -278,8 +288,9 @@ setlistener("/controls/engines/engine[0]/throttle", func (position){
 
 setlistener("/gear/gear/rollspeed-ms", func (speed){
     var speed = speed.getValue();
+	var crnw = getprop("/sim/crashed") or 0;
     # only for manipulate the reset m function 
-	if (speed > 10) setprop("/controls/waiting", 1);
+	if (speed > 20 and !crnw) setprop("/controls/waiting", 1);
 	if(getprop("/instrumentation/Honda-CBR/speed-indicator/selection")){
 		if(speed > 0.1){
 			setprop("/instrumentation/Honda-CBR/speed-indicator/speed-meter", speed*3600/1000*0.621371); # mph
